@@ -108,6 +108,9 @@ sudo vim /etc/nginx/conf.d/50-netbox.conf
 Get nginx cert
 ```shell
 sudo certbot --nginx certonly --register-unsafely-without-email
+# Add renewal to certbot
+sudo crontab -e
+#0 3 * * * certbot renew # Renew certs every day at 3:00 AM
 sudo systemctl restart nginx
 sudo systemctl enable nginx
 ```
